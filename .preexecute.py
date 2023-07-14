@@ -1,6 +1,7 @@
 import os
 import random
 import math
+import time
 from uuid import uuid4
 from hashlib import sha256
 
@@ -95,6 +96,16 @@ def const():
 # globals()
 # locals()
 
+def timer(acc=1, wait_time=0.1):
+	starttime = time.time()
+	try:
+		NOT_INTERUPTED = True
+		while NOT_INTERUPTED:
+			teatime = round((time.time() - starttime), acc)
+			print(f">>>\t{teatime}s", end="\r")
+			time.sleep(wait_time)
+	except KeyboardInterrupt:
+		print(f"\t{teatime}s")
 def start(font="random"):
 	if font=="random":
 		print(random.choice(list(Calcly.fonts.values())))
