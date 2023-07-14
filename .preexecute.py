@@ -34,6 +34,11 @@ s, t, u, v, w = symbols('s t u v w')
 x, y, z = symbols('x y z')
 # init_printing(use_unicode=True)
 
+# overwrite plot function with thread and all args
+def plotm(*args, **kwargs):
+	from sympy import plot as syplot
+	threading.Thread(target=syplot, args=args, kwargs=kwargs).start()
+
 def contour(f, fill=True, 
 	  xlim=(-10, 10), ylim=(-10, 10), 
 	  acc=1000, cmap="inferno", **kwargs):
