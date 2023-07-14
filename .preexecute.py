@@ -36,7 +36,7 @@ x, y, z = symbols('x y z')
 
 def contour(f, fill=True, 
 	  xlim=(-10, 10), ylim=(-10, 10), 
-	  acc=1000, cmap="viridis"):
+	  acc=1000, cmap="inferno", **kwargs):
 	# fig = plt.figure()
 	# ax = fig.add_subplot(111)
 	xl = np.linspace(xlim[0],xlim[1],acc)
@@ -46,9 +46,9 @@ def contour(f, fill=True,
 	# ax.contourf(x,y,z)
 	fig, ax = plt.subplots()
 	if fill:
-		plt.contourf(x,y,z, cmap=cmap)
+		plt.contourf(x,y,z, cmap=cmap, **kwargs)
 	else:
-		plt.contour(x,y,z, cmap=cmap)
+		plt.contour(x,y,z, cmap=cmap, **kwargs)
 	plt.colorbar()
 	plt.show()
 
